@@ -6,6 +6,15 @@ const form = document.querySelector(".feedback-form");
 const email = document.querySelector(".feedback-form input");
 const message = document.querySelector(".feedback-form textarea");
 
+const fillingForm = () => {
+    const savedFeedback = JSON.parse(localStorage.getItem(STORAGE_FEEDBACK_KEY));
+
+    email.value = savedFeedback.email;
+    message.value = savedFeedback.message;
+}
+
+fillingForm();
+
 const saveFeedback = () => {
     const {
         elements: { email, message },
@@ -16,15 +25,6 @@ const saveFeedback = () => {
 }
 
 form.addEventListener('input', throttle(saveFeedback, 500));
-
-const fillingForm = () => {
-    const savedFeedback = JSON.parse(localStorage.getItem(STORAGE_FEEDBACK_KEY));
-
-    email.value = savedFeedback.email;
-    message.value = savedFeedback.message;
-}
-
-fillingForm();
 
 const submitEvent = (event) => {
     event.preventDefault();
