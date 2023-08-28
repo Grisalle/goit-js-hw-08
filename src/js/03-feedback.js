@@ -8,7 +8,7 @@ const message = document.querySelector(".feedback-form textarea");
 
 const fillingForm = () => {
     const savedFeedback = JSON.parse(localStorage.getItem(STORAGE_FEEDBACK_KEY));
-    if (savedFeedback === null) {
+    if (STORAGE_FEEDBACK_KEY === null) {
         return;
     };
     email.value = savedFeedback.email;
